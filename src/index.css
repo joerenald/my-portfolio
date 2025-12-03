@@ -1,0 +1,63 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Small utilities for the glowing gradient background and orbs */
+:root{
+  --glass: rgba(255,255,255,0.04);
+  --blue-600: #2563eb;
+}
+
+body { 
+  -webkit-font-smoothing: antialiased; 
+  -moz-osx-font-smoothing: grayscale; 
+}
+
+/* floating orbs / blobs */
+.orb { 
+  position: absolute; 
+  border-radius: 9999px; 
+  filter: blur(60px); 
+  opacity: 0.65; 
+  transform: translate3d(0,0,0); 
+}
+
+.orb--1 { 
+  width: 420px; 
+  height: 420px; 
+  background: linear-gradient(135deg, #0ea5e9, #7c3aed); 
+  top: -80px; 
+  left: -120px; 
+}
+
+.orb--2 { 
+  width: 320px; 
+  height: 320px; 
+  background: linear-gradient(135deg, #06b6d4, #3b82f6); 
+  bottom: -100px; 
+  right: -60px; 
+}
+
+/* floating blob animation for Hero section */
+@keyframes blob {
+  0%, 100% { transform: translate(0,0) scale(1); }
+  33% { transform: translate(30px, -40px) scale(1.1); }
+  66% { transform: translate(-20px, 20px) scale(0.9); }
+}
+.animate-blob { 
+  animation: blob 8s infinite; 
+}
+.animation-delay-2000 { 
+  animation-delay: 2s; 
+}
+@keyframes borderAnimation {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+.animate-border {
+  background: linear-gradient(90deg, #4f46e5, #6366f1, #0ea5e9, #f472b6, #facc15);
+  background-size: 300% 300%;
+  animation: borderAnimation 4s ease infinite;
+}
