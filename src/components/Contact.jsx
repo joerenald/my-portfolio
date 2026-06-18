@@ -76,7 +76,7 @@ export default function Contact() {
               <FaLinkedin />
             </a>
             <a
-              href="https://github.com/"
+              href="https://github.com/joerenald"
               target="_blank"
               className="hover:text-blue-400"
             >
