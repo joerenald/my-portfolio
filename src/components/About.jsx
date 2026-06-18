@@ -1,5 +1,3 @@
-
-//Learning git step by step
 import React from "react";
 import { motion } from "framer-motion";
 
@@ -7,47 +5,105 @@ export default function About() {
   return (
     <motion.section
       id="about"
-      className="py-20 px-6 bg-gray-900 relative overflow-hidden"
+     className="relative py-16 md:py-24 px-5 md:px-6 overflow-hidden"
       initial={{ opacity: 0, y: 50 }}
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.8 }}
     >
-      <div className="max-w-4xl mx-auto text-center md:text-left">
-        {/* Section Title */}
-       <center> <h2 className="text-4xl font-bold text-blue-400 mb-6">
-          About Me
-        </h2></center>
+      {/* Background Glow */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-500/10 rounded-full blur-3xl"></div>
+        <div className="absolute bottom-20 right-20 w-72 h-72 bg-blue-600/10 rounded-full blur-3xl"></div>
+      </div>
 
-        {/* Description */}
-        <p className="text-lg text-gray-300 leading-relaxed mb-4">
-          I'm Joe Renald, a passionate Computer Science student and aspiring software developer. 
-          I enjoy building modern and responsive applications using React, Tailwind CSS, PHP, and MySQL.
-        </p>
-        <p className="text-lg text-gray-300 leading-relaxed mb-4">
-          Currently, I'm working on a Question Bank Management System as my final year project, focusing 
-          on creating a smooth and user-friendly experience for both students and faculty.
-        </p>
-        <p className="text-lg text-gray-300 leading-relaxed">
-          My goal is to become a skilled full-stack developer and contribute to real-world software solutions.
-        </p>
+      <div className="max-w-5xl mx-auto">
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: -20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+          className="text-center mb-12"
+        >
+          <h2 className="text-3xl md:text-5xl font-extrabold bg-gradient-to-r from-cyan-400 via-blue-500 to-purple-500 bg-clip-text text-transparent">
+            About Me
+          </h2>
 
-        {/* Buttons */}
-        <div className="mt-10 flex justify-center md:justify-start gap-4">
-          <a
-            href="/resume.pdf"
-            download
-            className="px-6 py-3 bg-blue-600 text-white rounded-lg font-semibold hover:bg-blue-700 transition"
-          >
-            Download Resume
-          </a>
-          <a
-            href="#projects"
-            className="px-6 py-3 border border-white/10 rounded-lg text-white/90 hover:bg-gray-800 transition"
-          >
-            See Projects
-          </a>
-        </div>
+          <div className="w-24 h-1 mx-auto mt-4 rounded-full bg-gradient-to-r from-cyan-400 to-blue-500"></div>
+        </motion.div>
+
+        {/* Content Card */}
+        <motion.div
+          whileHover={{ scale: 1.01 }}
+          transition={{ duration: 0.3 }}
+          className="backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-6 md:p-12 shadow-2xl"
+        >
+          <p className="text-base md:text-xl text-gray-300 leading-8 md:leading-9 leading-9 text-justify mb-6">
+            Hi, I'm <span className="font-semibold text-cyan-400">Joe Renald A</span>,
+            an MCA student and passionate software developer with a strong
+            interest in Full-Stack Development, Artificial Intelligence, and
+            Machine Learning. I enjoy transforming ideas into practical,
+            user-friendly applications that solve real-world problems. From
+            developing AI-powered solutions such as Age and Gender Detection
+            Systems to building intelligent Study Planners and modern web
+            applications, I continuously explore emerging technologies and
+            enhance my technical expertise through hands-on development.
+          </p>
+
+          <p className="text-[15px] md:text-xl text-gray-300 leading-8 md:leading-9 text-left md:text-justify mb-6">
+            My journey in software development is driven by curiosity,
+            creativity, and a desire to build meaningful digital experiences.
+            I am passionate about designing scalable applications, writing
+            clean and efficient code, and learning new technologies that help
+            create innovative solutions. Every project I work on is an
+            opportunity to improve my skills and contribute to solving
+            practical challenges through technology.
+          </p>
+
+          <p className="text-[15px] md:text-xl text-gray-300 leading-8 md:leading-9 text-left md:text-justify">
+            My goal is to become a highly skilled Full-Stack Developer and AI
+            enthusiast, contributing to impactful software products while
+            continuously growing as a professional in the ever-evolving world
+            of technology.
+          </p>
+
+          {/* Buttons */}
+          <div className="mt-8 flex flex-wrap justify-center md:justify-start gap-3">
+            <a
+              href="/my-portfolio/joe_resume.pdf"
+              download
+              className="
+inline-flex items-center justify-center
+px-5 py-2.5
+text-sm font-semibold
+rounded-xl
+bg-gradient-to-r from-blue-600 to-cyan-500
+text-white
+shadow-lg
+hover:scale-105
+transition
+"
+            >
+              Download Resume
+            </a>
+
+            <a
+              href="#projects"
+           className="
+inline-flex items-center justify-center
+px-5 py-2.5
+text-sm font-semibold
+rounded-xl
+border border-white/20
+text-white
+hover:bg-white/10
+transition
+"
+            >
+              View Projects
+            </a>
+          </div>
+        </motion.div>
       </div>
     </motion.section>
   );

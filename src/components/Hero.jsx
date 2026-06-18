@@ -19,7 +19,19 @@ const TypeWriter = ({ text }) => {
 
 export default function Hero() {
   return (
-    <section id="home" className="relative min-h-screen flex items-center bg-gray-900 overflow-hidden">
+    <section
+  id="home"
+  className="
+  relative
+  min-h-screen
+  flex
+  items-center
+  overflow-hidden
+  bg-[#030712]
+"
+>
+
+  
       
       {/* Floating shapes */}
       <motion.div
@@ -34,7 +46,7 @@ export default function Hero() {
         transition={{ repeat: Infinity, duration: 7 }}
       ></motion.div>
 
-      <div className="max-w-6xl mx-auto px-6 py-32 grid md:grid-cols-2 gap-10 items-center">
+      <div className="max-w-6xl mx-auto px-6 py-32 flex flex-col-reverse md:grid md:grid-cols-2 gap-10 items-center">
         
         {/* Text Section */}
         <motion.div
@@ -42,7 +54,7 @@ export default function Hero() {
           animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 1 }}
         >
-          <h1 className="text-5xl md:text-6xl font-extrabold mb-4">
+          <h1 className="text-4xl sm:text-5xl md:text-6xl font-extrabold mb-4">
             Hi, I'm{" "}
             <span className="bg-clip-text text-transparent bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500">
               Joe Renald A
@@ -50,21 +62,49 @@ export default function Hero() {
           </h1>
 
           <h2 className="text-2xl md:text-3xl font-semibold text-gray-300 mb-6">
-            <TypeWriter text="BSc Computer Science | Software Developer" />
+            <TypeWriter text="MCA Student | Full-Stack Developer | AI Enthusiast" />
           </h2>
 
-          <p className="text-gray-400 text-lg md:text-xl mb-8 max-w-xl">
+          <p className="text-gray-400 text-base sm:text-lg md:text-xl mb-8 max-w-xl">
             I craft modern web applications with React, Tailwind CSS, and full-stack solutions. I focus on responsive design and seamless user experiences.
           </p>
 
-          <div className="flex gap-4">
-            <a href="#about" className="px-6 py-3 bg-gradient-to-r from-blue-500 to-indigo-600 rounded-xl font-semibold shadow-lg hover:scale-105 transition">
-              Explore More
-            </a>
-            <a href="/resume.pdf" download className="px-6 py-3 border border-white/20 rounded-xl text-white/90 hover:bg-gray-800 transition">
-              Resume
-            </a>
-          </div>
+          <div className="flex gap-3 mt-8">
+  <a
+    href="#about"
+    className="
+      px-5 py-2.5
+      text-sm md:text-base
+      bg-gradient-to-r
+      from-blue-500
+      to-indigo-600
+      rounded-xl
+      font-medium
+      shadow-lg
+      hover:scale-105
+      transition
+    "
+  >
+    Explore
+  </a>
+
+  <a
+    href="/my-portfolio/joe_resume.pdf"
+    download
+    className="
+      px-5 py-2.5
+      text-sm md:text-base
+      border
+      border-white/20
+      rounded-xl
+      text-white/90
+      hover:bg-white/10
+      transition
+    "
+  >
+    Resume
+  </a>
+</div>
         </motion.div>
 {/* Avatar Card With Elegant Background */}
 <motion.div
@@ -98,7 +138,7 @@ export default function Hero() {
       {/* SOCIAL ICONS */}
       <div className="flex gap-4 mt-5">
         <motion.a
-          href="https://github.com/"
+          href="https://github.com/joerenald"
           target="_blank"
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
@@ -108,7 +148,7 @@ export default function Hero() {
         </motion.a>
 
         <motion.a
-          href="https://linkedin.com/"
+          href="https://www.linkedin.com/in/joereno754"
           target="_blank"
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
@@ -118,7 +158,7 @@ export default function Hero() {
         </motion.a>
 
         <motion.a
-          href="https://instagram.com/"
+          href="https://www.instagram.com/joe_reno754/"
           target="_blank"
           whileHover={{ scale: 1.2 }}
           whileTap={{ scale: 0.9 }}
@@ -130,9 +170,6 @@ export default function Hero() {
     </div>
   </div>
 </motion.div>
-
-
-
       </div>
     </section>
   );

@@ -1,124 +1,266 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
+import { Menu, X, Download } from "lucide-react";
 
 export default function Navbar() {
   const [scrolled, setScrolled] = useState(false);
-  const [active, setActive] = useState('home');
+  const [active, setActive] = useState("home");
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
     const onScroll = () => {
       setScrolled(window.scrollY > 20);
-      const sections = ['home', 'about', 'skills', 'projects', 'contact'];
-      for (const s of sections) {
-        const el = document.getElementById(s);
+
+      const sections = [
+        "home",
+        "about",
+        "education",
+        "skills",
+        "projects",
+        "contact",
+      ];
+
+      for (const section of sections) {
+        const el = document.getElementById(section);
+
         if (!el) continue;
+
         const rect = el.getBoundingClientRect();
+
         if (rect.top <= 120 && rect.bottom >= 120) {
-          setActive(s);
+          setActive(section);
           break;
         }
       }
     };
-    window.addEventListener('scroll', onScroll);
-    return () => window.removeEventListener('scroll', onScroll);
+
+    window.addEventListener("scroll", onScroll);
+
+    return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
   const links = [
-    { id: 'home', label: 'Home' },
-    { id: 'about', label: 'About' },
-    { id: 'skills', label: 'Skills' },
-    { id: 'projects', label: 'Projects' },
-    { id: 'contact', label: 'Contact' },
+    { id: "home", label: "Home" },
+    { id: "about", label: "About" },
+    { id: "education", label: "Education" },
+    { id: "skills", label: "Skills" },
+    { id: "projects", label: "Projects" },
+    { id: "contact", label: "Contact" },
   ];
 
   return (
-    <header
-      className={`fixed w-full z-40 transition-all ${
-        scrolled ? 'backdrop-blur-md bg-black/40 shadow-lg' : 'bg-transparent'
-      }`}
-    >
-      <div className="max-w-6xl mx-auto px-6 py-3 flex items-center justify-between">
-        <div className="flex items-center gap-3">
-          <div className="w-10 h-10 bg-gradient-to-br from-blue-400 to-indigo-600 rounded-full flex items-center justify-center font-bold text-black">
-            JR
-          </div>
-          <div>
-            <div className="text-sm font-semibold">Joe Renald A</div>
-            <div className="text-xs text-gray-300">BSc Computer Science</div>
-          </div>
-        </div>
-
-        <nav className="hidden md:flex items-center gap-6">
-          {links.map((l) => (
-            <a
-              key={l.id}
-              href={`#${l.id}`}
-              className={`relative py-2 ${
-                active === l.id ? 'text-blue-300' : 'text-gray-300 hover:text-white'
-              }`}
+    <header className="fixed top-4 left-0 right-0 z-50 px-4">
+      <div
+        className={`
+          max-w-7xl mx-auto
+          rounded-2xl
+          border border-white/10
+          transition-all duration-500
+          before:absolute
+before:bottom-0
+before:left-0
+before:right-0
+before:h-px
+before:bg-gradient-to-r
+before:from-transparent
+before:via-blue-500/40
+before:to-transparent
+          ${
+            scrolled
+              ? "bg-black/40 backdrop-blur-xl shadow-[0_0_40px_rgba(59,130,246,0.15)]"
+              : "bg-black/20 backdrop-blur-md"
+          }
+        `}
+      >
+        <div className="px-6 py-4 flex items-center justify-between">
+          {/* Logo */}
+          <div className="flex items-center gap-3">
+            <div
+              className="
+w-11 h-11
+rounded-xl
+bg-gradient-to-r
+from-blue-500
+via-purple-500
+to-pink-500
+flex items-center justify-center
+font-bold text-white
+shadow-lg
+hover:scale-110
+hover:shadow-[0_0_25px_rgba(168,85,247,0.6)]
+transition-all duration-300
+"
             >
-              {l.label}
-              {active === l.id && (
-                <span className="absolute -bottom-3 left-0 right-0 h-0.5 bg-blue-400 rounded-full" />
-              )}
-            </a>
-          ))}
-          <a
-            href="/resume.pdf"
-            download
-            className="ml-4 bg-blue-600 px-4 py-2 rounded-lg text-white font-semibold hover:bg-blue-500"
-          >
-            Resume
-          </a>
-        </nav>
+              JR
+            </div>
 
-        <button
-          className="md:hidden p-2"
-          onClick={() => setOpen((v) => !v)}
-          aria-label="menu"
-        >
-          <svg
-            width="24"
-            height="24"
-            viewBox="0 0 24 24"
-            fill="none"
-            className="text-white"
-          >
-            <path
-              d="M4 6h16M4 12h16M4 18h16"
-              stroke="currentColor"
-              strokeWidth="2"
-              strokeLinecap="round"
-              strokeLinejoin="round"
-            />
-          </svg>
-        </button>
-      </div>
+            <div>
+              <h1 className="font-bold text-white">
+                Joe Renald A
+              </h1>
 
-      {/* mobile menu */}
-      {open && (
-        <div className="md:hidden bg-black/60 backdrop-blur-md px-6 pb-6">
-          <div className="flex flex-col gap-3 mt-2">
-            {links.map((l) => (
+              <p className="text-xs text-gray-400">
+               MCA • AI Developer
+              </p>
+            </div>
+          </div>
+
+          {/* Desktop Nav */}
+          <nav className="hidden lg:flex items-center gap-2">
+            {links.map((link) => (
               <a
-                key={l.id}
-                href={`#${l.id}`}
-                className="py-3 text-gray-200 border-b border-white/5"
-                onClick={() => setOpen(false)}
+                key={link.id}
+                href={`#${link.id}`}
+                className={`
+                  relative
+                  px-4
+                  py-2
+                  rounded-xl
+                  transition-all
+                  duration-300
+                  ${
+                    active === link.id
+                      ? "text-white"
+                      : "text-gray-400 hover:text-white"
+                  }
+                `}
               >
-                {l.label}
+                {active === link.id && (
+                  <span
+                    className="
+                      absolute
+                      inset-0
+                      rounded-xl
+                      bg-gradient-to-r
+                      from-blue-500/20
+                      via-purple-500/20
+                      to-pink-500/20
+                      border
+                      border-white/10
+                    "
+                  />
+                )}
+
+                <span className="relative z-10">
+                  {link.label}
+                </span>
               </a>
             ))}
+
+            {/* Resume Button */}
             <a
-              href="/resume.pdf"
+              href="/my-portfolio/joe_resume.pdf"
               download
-              className="mt-2 bg-blue-600 px-4 py-2 rounded-lg text-white font-semibold inline-block"
+              className="
+                ml-3
+                flex
+                items-center
+                gap-2
+                px-5
+                py-2.5
+                rounded-xl
+                bg-gradient-to-r
+                from-blue-500
+                to-indigo-600
+                text-white
+                font-semibold
+                shadow-lg
+                hover:scale-105
+                transition
+              "
             >
+              <Download size={16} />
+              Resume
+            </a>
+          </nav>
+
+          {/* Mobile Button */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="
+  lg:hidden
+  p-3
+  rounded-xl
+  bg-white/5
+  border border-white/10
+  backdrop-blur-md
+  hover:bg-white/10
+  transition-all
+"
+          >
+            {open ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+
+        {/* Mobile Menu */}
+        <div
+          className={`
+            lg:hidden
+            overflow-hidden
+            transition-all
+            duration-500
+            ${
+              open
+                ? "max-h-[500px] opacity-100"
+                : "max-h-0 opacity-0"
+            }
+          `}
+        >
+          <div
+  className="
+    mx-4 mb-4
+    p-4
+    rounded-2xl
+    bg-black/40
+    backdrop-blur-xl
+    border border-white/10
+    flex flex-col gap-3
+  "
+>
+            {links.map((link) => (
+              <a
+                key={link.id}
+                href={`#${link.id}`}
+                onClick={() => setOpen(false)}
+               className={`
+  py-3
+  px-4
+  rounded-xl
+  transition
+  ${
+    active === link.id
+      ? "bg-gradient-to-r from-blue-500/20 via-purple-500/20 to-pink-500/20 border border-white/10 text-white"
+      : "bg-white/5 hover:bg-white/10 text-gray-300"
+  }
+`}
+              >
+                {link.label}
+              </a>
+            ))}
+
+            <a
+              href="/my-portfolio/joe_resume.pdf"
+              download
+              className="
+                mt-2
+                flex
+                justify-center
+                items-center
+                gap-2
+                px-5
+                py-3
+                rounded-xl
+                bg-gradient-to-r
+                from-blue-500
+                to-indigo-600
+                font-semibold
+              "
+            >
+              <Download size={18} />
               Resume
             </a>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }

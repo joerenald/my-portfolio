@@ -1,34 +1,64 @@
-import React from 'react'
-import Navbar from './components/Navbar.jsx'
-import Hero from './components/Hero.jsx'
-import About from './components/About.jsx'
+import React from "react";
+
+import Navbar from "./components/Navbar";
+import Hero from "./components/Hero";
+import About from "./components/About";
 import Education from "./components/Education";
-import Skills from './components/Skills.jsx'
-import Projects from './components/Projects.jsx'
-import Certificates from './components/Certificates.jsx'
-import Contact from './components/Contact.jsx'
-import Footer from './components/Footer.jsx'
-import ScrollToTop from './components/ScrollToTop.jsx'
-
-export default function App() {
+import Skills from "./components/Skills";
+import Projects from "./components/Projects";
+import Certificates from "./components/Certificates";
+import Contact from "./components/Contact";
+import Footer from "./components/Footer";
+import ScrollToTop from "./components/ScrollToTop";
+import MouseGlow from "./components/MouseGlow";
+function App() {
   return (
-    <div className="bg-gray-900 text-white relative overflow-x-hidden">
-      <div className="orb orb--1 pointer-events-none" aria-hidden />
-      <div className="orb orb--2 pointer-events-none" aria-hidden />
+    <div className="relative min-h-screen overflow-x-hidden bg-gray-900 text-white">
+      
+     {/* Premium Background System */}
+<div className="fixed inset-0 -z-10 overflow-hidden">
+  
+  {/* Aurora Layer */}
+  <div className="aurora-bg"></div>
 
+  {/* Animated Grid */}
+  <div className="grid-overlay"></div>
+
+  {/* Floating Orb 1 */}
+  <div className="orb orb--1"></div>
+
+  {/* Floating Orb 2 */}
+  <div className="orb orb--2"></div>
+
+  {/* Floating Orb 3 */}
+  <div className="orb orb--3"></div>
+
+  {/* Noise Texture */}
+  <div className="noise-overlay"></div>
+</div>
+
+      {/* Navigation */}
       <Navbar />
+
+      {/* Main Content */}
       <main>
+        <MouseGlow />
         <Hero />
         <About />
-        <Education />   
+        <Education />
         <Skills />
         <Projects />
-        <Certificates/>
+        <Certificates />
         <Contact />
       </main>
 
+      {/* Footer */}
       <Footer />
+
+      {/* Scroll To Top Button */}
       <ScrollToTop />
     </div>
-  )
+  );
 }
+
+export default App;

@@ -8,61 +8,56 @@ import nptelDB from "../npteldb.jpeg";
 
 const certificatesData = [
   {
+    title: "Complete Data Analyst Bootcaamp",
+    organization: "Udemy",
+    date: "May 2026",
+    category: "Data",
+    image: "/my-portfolio/da.png",
+    icon: <FaCertificate size={24} className="text-yellow-400" />,
+  },
+  {
+    title: "Academic Excellence Award",
+    organization: "St. Joseph's College",
+    date: "Feb 2026",
+    category: "Academic",
+    image: "/my-portfolio/sjc_merit.jpeg",
+    icon: <FaCertificate size={24} className="text-gray-400" />,
+  },
+  {
+    title: "Pitch Fest",
+    organization: "St. Joseph's College (Autonomous)",
+    date: "Feb 2026",
+    category: "Academic",
+    image: "/my-portfolio/pitchfest.png",
+    icon: <FaCertificate size={24} className="text-gray-400" />,
+  },
+  {
     title: "Database Management System",
     organization: "NPTEL",
-    date: "July 2024",
-    category: "Tech",
+    date: "Sep 2025",
+    category: "Data",
     image: nptelDB,
     icon: <FaCertificate size={24} className="text-yellow-400" />,
   },
   {
-    title: "React - The Complete Guide",
-    organization: "Udemy",
-    date: "June 2024",
-    category: "Tech",
-    image: "/certificates/react-guide.jpg",
-    icon: <FaCertificate size={24} className="text-yellow-400" />,
+    title: "Exploratory Data Analysis",
+    organization: "NASSCOM",
+    date: "Aug 2025",
+    category: "Data",
+    image: "/my-portfolio/eda.png",
+    icon: <FaCertificate size={24} className="text-gray-400" />,
   },
   {
-    title: "Power BI Essentials",
-    organization: "Microsoft Learn",
-    date: "August 2024",
+    title: "Data Structures and Algorithms using C",
+    organization: "Udemy",
+    date: "Jun 2023",
     category: "Data",
-    image: "/certificates/powerbi.jpg",
+    image: "/my-portfolio/dsa.png",
     icon: <FaCertificate size={24} className="text-green-400" />,
   },
-  {
-    title: "Data Structures & Algorithms",
-    organization: "Coursera",
-    date: "Coming Soon",
-    category: "Tech",
-    image: "/certificates/comingsoon.jpg",
-    icon: <FaCertificate size={24} className="text-gray-400" />,
-  },
-  {
-    title: "AWS Cloud Practitioner",
-    organization: "Amazon AWS",
-    date: "Coming Soon",
-    category: "Cloud",
-    image: "/certificates/comingsoon.jpg",
-    icon: <FaCertificate size={24} className="text-gray-400" />,
-  },
-  {
-    title: "Python for Everybody",
-    organization: "Coursera",
-    date: "Coming Soon",
-    category: "Tech",
-    image: "/certificates/comingsoon.jpg",
-    icon: <FaCertificate size={24} className="text-gray-400" />,
-  },
-  {
-    title: "Full Stack Development",
-    organization: "GUVI",
-    date: "Coming Soon",
-    category: "Tech",
-    image: "/certificates/comingsoon.jpg",
-    icon: <FaCertificate size={24} className="text-gray-400" />,
-  },
+  
+  
+  
 ];
 
 export default function Certificates() {
@@ -114,12 +109,12 @@ export default function Certificates() {
     <section id="certificates" ref={ref} className="py-20 px-6 bg-gray-900 text-white">
       <div className="max-w-6xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-8 text-blue-400 tracking-wide drop-shadow-md">
-          Certificates
+          Certificates and Achievements
         </h2>
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {["All", "Tech", "Data", "Cloud"].map((filter) => (
+          {["All", "Tech", "Data", "Academic"].map((filter) => (
             <button
               key={filter}
               className={`px-6 py-2 rounded-full transition-all shadow-md hover:shadow-blue-500/30 ${
@@ -253,5 +248,4 @@ export default function Certificates() {
         )}
       </AnimatePresence>
     </section>
-  );
-}
+  );}
