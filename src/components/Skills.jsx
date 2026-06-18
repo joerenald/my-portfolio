@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useInView } from "react-intersection-observer";
 import Reveal from "./Reveal";
-import SkillCard from "./SkillCard";
+import SkillCard from "./SkillCard.jsx";
 import { motion } from "framer-motion";
 
 const allSkills = [
