@@ -57,12 +57,29 @@ function NextArrow({ onClick }) {
   return (
     <button
       onClick={onClick}
-      className="absolute -right-5 top-1/2 -translate-y-1/2 z-20
-      bg-white/10 backdrop-blur-md border border-white/20
-      p-3 rounded-full shadow-xl hover:scale-110
-      hover:bg-blue-500/20 transition duration-300"
+      className="
+      absolute right-2 md:right-4
+      top-1/2 -translate-y-1/2
+      z-[999]
+
+      w-10 h-10 md:w-12 md:h-12
+      rounded-full
+
+      bg-white/10
+      backdrop-blur-xl
+      border border-white/20
+
+      flex items-center justify-center
+
+      shadow-lg shadow-purple-500/30
+
+      hover:scale-110
+      hover:bg-purple-500/20
+
+      transition-all duration-300
+      "
     >
-      <ChevronRight className="text-white" size={24} />
+      <ChevronRight size={20} className="text-white" />
     </button>
   );
 }
@@ -71,16 +88,32 @@ function PrevArrow({ onClick }) {
   return (
     <button
       onClick={onClick}
-      className="absolute -left-5 top-1/2 -translate-y-1/2 z-20
-      bg-white/10 backdrop-blur-md border border-white/20
-      p-3 rounded-full shadow-xl hover:scale-110
-      hover:bg-blue-500/20 transition duration-300"
+      className="
+      absolute left-2 md:left-4
+      top-1/2 -translate-y-1/2
+      z-[999]
+
+      w-10 h-10 md:w-12 md:h-12
+      rounded-full
+
+      bg-white/10
+      backdrop-blur-xl
+      border border-white/20
+
+      flex items-center justify-center
+
+      shadow-lg shadow-purple-500/30
+
+      hover:scale-110
+      hover:bg-purple-500/20
+
+      transition-all duration-300
+      "
     >
-      <ChevronLeft className="text-white" size={24} />
+      <ChevronLeft size={20} className="text-white" />
     </button>
   );
 }
-
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
 
@@ -99,10 +132,8 @@ export default function Projects() {
   speed: 700,
   slidesToShow: 3,
   slidesToScroll: 1,
-  autoplay: false,
-  pauseOnHover: true,
-  centerMode: false,
 
+  arrows: true,
   nextArrow: <NextArrow />,
   prevArrow: <PrevArrow />,
 
@@ -114,14 +145,17 @@ export default function Projects() {
       },
     },
     {
-      breakpoint: 640,
+      breakpoint: 768,
       settings: {
         slidesToShow: 1,
+        slidesToScroll: 1,
+        centerMode: true,
+        centerPadding: "30px",
+        arrows: true,
       },
     },
   ],
 };
-
   /* IMAGE SLIDER INSIDE MODAL */
 
   const imageSliderSettings = {
@@ -137,7 +171,7 @@ export default function Projects() {
     <section
       id="projects"
       ref={ref}
-      className="py-24 px-6 bg-gray-900 overflow-hidden relative"
+     className="py-16 md:py-24 px-4 md:px-6"
     >
       {/* BACKGROUND GLOW */}
 
@@ -155,7 +189,7 @@ export default function Projects() {
         {/* TITLE */}
 
         <motion.h2
-          className="text-4xl md:text-5xl font-extrabold text-center mb-16
+          className="text-3xl md:text-5xl font-extrabold text-center mb-16
           bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500
           bg-clip-text text-transparent"
           initial={{ opacity: 0, y: 40 }}
@@ -185,7 +219,7 @@ className="
 relative group rounded-3xl overflow-hidden
 bg-white/5 backdrop-blur-xl border border-white/10
 shadow-2xl cursor-pointer
-h-[420px] md:h-[500px]
+h-[350px] md:h-[500px]
 flex flex-col
 "
   onClick={() => setSelectedProject(project)}
@@ -208,13 +242,18 @@ flex flex-col
   </span>
 
   {/* IMAGE */}
-  <div className="relative h-60 overflow-hidden flex-shrink-0">
+<div className="relative h-36 md:h-60 overflow-hidden flex-shrink-0">
     <img
       src={project.images[0]}
       alt={project.title}
-      className="w-full h-full object-cover
-      group-hover:scale-110 group-hover:rotate-1
-      transition duration-[1200ms]"
+      className="
+w-full
+h-full
+object-contain
+bg-black/10
+group-hover:scale-105
+transition duration-700
+"
     />
 
     <div
@@ -224,15 +263,8 @@ flex flex-col
   </div>
 
   {/* CONTENT */}
-  <div className="relative z-10 p-6 flex flex-col flex-grow">
-    <h3
-  className="
-  text-xl md:text-2xl
-  font-bold text-white mb-3
-  min-h-[56px]
-  line-clamp-2
-  "
->
+ <div className="relative z-10 p-4 flex flex-col gap-1">
+  <h3 className="text-lg md:text-2xl font-bold text-white leading-tight">
   {project.title}
 </h3>
 
@@ -240,24 +272,34 @@ flex flex-col
       {project.category}
     </p>
 
-    <p
-      className="text-gray-300 text-sm leading-relaxed
-      line-clamp-4 flex-grow"
-    >
-      {project.description}
-    </p>
-
+   <p
+  className="
+  text-gray-300
+  text-sm
+  leading-relaxed
+  line-clamp-2
+  mt-1
+  "
+>
+  {project.description}
+</p>
     {/* BUTTON */}
     <div
-      className="mt-6 opacity-0 translate-y-5
+      className="mt-3 opacity-0 translate-y-5
       group-hover:opacity-100 group-hover:translate-y-0
       transition duration-500"
     >
-      <button
-        className="px-5 py-2 rounded-xl
-        bg-gradient-to-r from-blue-500 to-purple-600
-        text-white font-medium shadow-lg"
-      >
+     <button
+  className="
+  px-4 py-2
+  text-sm
+  rounded-xl
+  bg-gradient-to-r
+  from-blue-500
+  to-purple-600
+  text-white
+  "
+>
         View Details
       </button>
     </div>
@@ -307,7 +349,15 @@ flex flex-col
 
               {/* TITLE */}
 
-              <h3 className="text-3xl font-bold text-white mb-3">
+              <h3
+  className="
+  text-xl md:text-2xl
+  font-bold
+  text-white
+  line-clamp-2
+  min-h-[56px]
+"
+>
                 {selectedProject.title}
               </h3>
 
@@ -327,7 +377,7 @@ flex flex-col
                     <img
                       src={img}
                       alt=""
-                      className="rounded-2xl w-full h-[420px] object-cover"
+                      className="rounded-2xl w-full h-[420px] object-contain"
                     />
                   </div>
                 ))}
