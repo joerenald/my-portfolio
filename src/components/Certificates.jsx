@@ -12,7 +12,7 @@ const certificatesData = [
     organization: "Udemy",
     date: "May 2026",
     category: "Data",
-    image: "/my-portfolio/da.png",
+    image: "/da.png",
     icon: <FaCertificate size={24} className="text-yellow-400" />,
   },
   {
@@ -20,7 +20,7 @@ const certificatesData = [
     organization: "St. Joseph's College",
     date: "Feb 2026",
     category: "Academic",
-    image: "/my-portfolio/sjc_merit.jpeg",
+    image: "/sjc_merit.jpeg",
     icon: <FaCertificate size={24} className="text-gray-400" />,
   },
   {
@@ -28,7 +28,7 @@ const certificatesData = [
     organization: "St. Joseph's College (Autonomous)",
     date: "Feb 2026",
     category: "Academic",
-    image: "/my-portfolio/pitchfest.png",
+    image: "/pitchfest.png",
     icon: <FaCertificate size={24} className="text-gray-400" />,
   },
   {
@@ -44,7 +44,7 @@ const certificatesData = [
     organization: "NASSCOM",
     date: "Aug 2025",
     category: "Data",
-    image: "/my-portfolio/eda.png",
+    image: "/eda.png",
     icon: <FaCertificate size={24} className="text-gray-400" />,
   },
   {
@@ -52,7 +52,7 @@ const certificatesData = [
     organization: "Udemy",
     date: "Jun 2023",
     category: "Data",
-    image: "/my-portfolio/dsa.png",
+    image: "/dsa.png",
     icon: <FaCertificate size={24} className="text-green-400" />,
   },
   

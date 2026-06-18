@@ -24,7 +24,7 @@ const dashboards = [
     description:
       "An AI-powered web application that predicts gender, age from facial images using ML.",
     status: "Live",
-    images:["/my-portfolio/gd.png"],
+    images:["/gd.png"],
     demo: "https://gender-detection-frontend-e3oc.vercel.app/",
     github: "https://github.com/joerenald",
   },
@@ -34,7 +34,7 @@ const dashboards = [
     description:
       "An AI-powered study planning app that helps students organize schedules and manage tasks intelligently.",
     status: "Live",
-    images:["/my-portfolio/asp.png"],
+    images:["/asp.png"],
     demo: "https://ai-study-planner-ilwe.vercel.app/",
     github: "https://github.com/joerenald",
   },
@@ -44,7 +44,7 @@ const dashboards = [
     description:
       "A healthcare application that predicts diseases using machine learning algorithms and symptom analysis.",
     status: "Live",
-    images: ["/my-portfolio/dp1.png"],
+    images: ["/dp1.png"],
     demo: "https://ai-disease-predictor-ashen.vercel.app/",
     github: "https://github.com/joerenald",
   },
@@ -181,9 +181,13 @@ export default function Projects() {
     stiffness: 200,
     damping: 15,
   }}
-  className="relative group rounded-3xl overflow-hidden
-  bg-white/5 backdrop-blur-xl border border-white/10
-  shadow-2xl cursor-pointer h-[500px] flex flex-col"
+className="
+relative group rounded-3xl overflow-hidden
+bg-white/5 backdrop-blur-xl border border-white/10
+shadow-2xl cursor-pointer
+h-[420px] md:h-[500px]
+flex flex-col
+"
   onClick={() => setSelectedProject(project)}
 >
   {/* GLOW HOVER */}
@@ -222,11 +226,15 @@ export default function Projects() {
   {/* CONTENT */}
   <div className="relative z-10 p-6 flex flex-col flex-grow">
     <h3
-      className="text-2xl font-bold text-white mb-3
-      group-hover:text-blue-400 transition min-h-[64px]"
-    >
-      {project.title}
-    </h3>
+  className="
+  text-xl md:text-2xl
+  font-bold text-white mb-3
+  min-h-[56px]
+  line-clamp-2
+  "
+>
+  {project.title}
+</h3>
 
     <p className="text-blue-400 text-sm mb-4">
       {project.category}

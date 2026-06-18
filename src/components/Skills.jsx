@@ -8,10 +8,10 @@ const allSkills = [
   { name: "React", category: "Frontend", level: 90, exp: "2 years" },
   { name: "Tailwind CSS", category: "Frontend", level: 85, exp: "2 years" },
   { name: "JavaScript", category: "Frontend", level: 90, exp: "3 years" },
-  { name: "HTML & CSS", category: "Frontend", level: 95, exp: "3 years" },
+  { name: "HTML & CSS", displayName: "HTML/CSS", category: "Frontend", level: 95, exp: "3 years" },
   { name: "Python", category: "Backend", level: 80, exp: "2 years" },
   { name: "MySQL", category: "Database", level: 85, exp: "2 years" },
-  { name: "Git & GitHub", category: "Tools", level: 90, exp: "3 years" },
+  { name: "Git & GitHub", displayName: "Git/GitHub", category: "Tools", level: 90, exp: "3 years" },
   { name: "Vite", category: "Tools", level: 70, exp: "1 year" },
 ];
 

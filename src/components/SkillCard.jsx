@@ -168,21 +168,21 @@ export default function SkillCard({ skill, index, inView }) {
 
         {/* Percentage */}
         <div className="absolute text-center">
-          <h3 className="text-lg font-bold text-white">
-            {displayValue}%
-          </h3>
+         <h3 className="text-lg font-bold text-white w-12 text-center">
+  {displayValue}%
+</h3>
         </div>
 
         {/* Icon */}
-        <div className="absolute -bottom-3 bg-[#0f172a] p-2 rounded-full border border-white/10 shadow-lg">
-          {skillIcons[skill.name]}
-        </div>
+        <div className="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-[#0f172a] p-2 rounded-full border border-white/10 shadow-lg">
+  {skillIcons[skill.name]}
+</div>
       </div>
 
       {/* Skill Name */}
-      <h3 className="text-xl font-semibold text-center mb-2 mt-4">
-        {skill.name}
-      </h3>
+     <h3 className="text-xl font-semibold text-center mb-2 mt-4 truncate">
+  {skill.displayName || skill.name}
+</h3>
 
       {/* Category */}
       <div className="flex justify-center">
