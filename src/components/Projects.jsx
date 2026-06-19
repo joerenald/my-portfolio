@@ -1,414 +1,244 @@
-import React, { useState, useRef } from "react";
-import {
-  motion,
-  AnimatePresence,
-  useInView,
-} from "framer-motion";
-
+import React, { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Slider from "react-slick";
-
-import {
-  ChevronLeft,
-  ChevronRight,
-  ExternalLink,
-  Github,
-} from "lucide-react";
+import { Github, X, ExternalLink } from "lucide-react";
 
 import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 
-const dashboards = [
+const projects = [
   {
-    title: "Gender Age Prediction WebApp",
-    category: "AI | ML",
-    description:
-      "An AI-powered web application that predicts gender, age from facial images using ML.",
-    status: "Live",
-    images:["/gd.png"],
-    demo: "https://gender-detection-frontend-e3oc.vercel.app/",
-    github: "https://github.com/joerenald",
-  },
-  {
+    id: 1,
     title: "AI Study Planner",
-    category: "AI | Python",
+    category: "AI • Python",
+    image: "/asp.png",
     description:
-      "An AI-powered study planning app that helps students organize schedules and manage tasks intelligently.",
-    status: "Live",
-    images:["/asp.png"],
+      "AI-powered system that generates smart, personalized study schedules.",
+    technologies: ["React", "Python", "Flask"],
     demo: "https://ai-study-planner-ilwe.vercel.app/",
     github: "https://github.com/joerenald",
   },
   {
-    title: "Disease Prediction System",
-    category: "AI | ML",
+    id: 2,
+    title: "Gender Age Prediction",
+    category: "AI • Deep Learning",
+    image: "/gd.png",
     description:
-      "A healthcare application that predicts diseases using machine learning algorithms and symptom analysis.",
-    status: "Live",
-    images: ["/dp1.png"],
+      "Predicts age and gender from facial images using deep learning.",
+    technologies: ["React", "TensorFlow", "CNN"],
+    demo: "https://gender-detection-frontend-e3oc.vercel.app/",
+    github: "https://github.com/joerenald",
+  },
+  {
+    id: 3,
+    title: "Disease Prediction System",
+    category: "ML • Healthcare",
+    image: "/dp1.png",
+    description:
+      "ML system that predicts diseases from symptoms input.",
+    technologies: ["React", "Flask", "Machine Learning"],
     demo: "https://ai-disease-predictor-ashen.vercel.app/",
     github: "https://github.com/joerenald",
   },
-
 ];
 
-/* CUSTOM ARROWS */
-
-function NextArrow({ onClick }) {
+function Arrow({ onClick, direction }) {
   return (
     <button
       onClick={onClick}
-      className="
-      absolute right-2 md:right-4
-      top-1/2 -translate-y-1/2
-      z-[999]
-
-      w-10 h-10 md:w-12 md:h-12
-      rounded-full
-
-      bg-white/10
-      backdrop-blur-xl
-      border border-white/20
-
+      className={`absolute top-1/2 -translate-y-1/2 z-20
+      w-11 h-11 rounded-full
       flex items-center justify-center
-
-      shadow-lg shadow-purple-500/30
-
-      hover:scale-110
-      hover:bg-purple-500/20
-
-      transition-all duration-300
-      "
-    >
-      <ChevronRight size={20} className="text-white" />
-    </button>
-  );
-}
-
-function PrevArrow({ onClick }) {
-  return (
-    <button
-      onClick={onClick}
-      className="
-      absolute left-2 md:left-4
-      top-1/2 -translate-y-1/2
-      z-[999]
-
-      w-10 h-10 md:w-12 md:h-12
-      rounded-full
-
-      bg-white/10
       backdrop-blur-xl
-      border border-white/20
-
-      flex items-center justify-center
-
-      shadow-lg shadow-purple-500/30
-
-      hover:scale-110
-      hover:bg-purple-500/20
-
+      border border-white/10
+      bg-white/5 hover:bg-white/10
+      text-white/70 hover:text-white
+      shadow-[0_8px_30px_rgba(0,0,0,0.4)]
       transition-all duration-300
-      "
+      hover:scale-110 hover:border-white/20
+      opacity-0 group-hover:opacity-100
+      ${direction === "left" ? "-left-5" : "-right-5"}`}
     >
-      <ChevronLeft size={20} className="text-white" />
+      <span className="text-lg leading-none">
+        {direction === "left" ? "‹" : "›"}
+      </span>
     </button>
   );
 }
 export default function Projects() {
   const [selectedProject, setSelectedProject] = useState(null);
 
-  const ref = useRef(null);
-
-  const isInView = useInView(ref, {
-    once: false,
-    margin: "-100px",
-  });
-
-  /* MAIN PROJECT SLIDER */
-
-  const projectSliderSettings = {
-  dots: true,
-  infinite: false,
-  speed: 700,
-  slidesToShow: 3,
-  slidesToScroll: 1,
-
-  arrows: true,
-  nextArrow: <NextArrow />,
-  prevArrow: <PrevArrow />,
-
-  responsive: [
-    {
-      breakpoint: 1024,
-      settings: {
-        slidesToShow: 2,
-      },
-    },
-    {
-      breakpoint: 768,
-      settings: {
-        slidesToShow: 1,
-        slidesToScroll: 1,
-        centerMode: true,
-        centerPadding: "30px",
-        arrows: true,
-      },
-    },
-  ],
-};
-  /* IMAGE SLIDER INSIDE MODAL */
-
-  const imageSliderSettings = {
+  const settings = {
     dots: true,
     infinite: true,
-    speed: 500,
-    slidesToShow: 1,
+    speed: 700,
+    slidesToShow: 2,
     slidesToScroll: 1,
-    arrows: true,
+    autoplay: true,
+    autoplaySpeed: 4000,
+    nextArrow: <Arrow direction="right" />,
+    prevArrow: <Arrow direction="left" />,
+    responsive: [
+      {
+        breakpoint: 768,
+        settings: {
+          slidesToShow: 1,
+        },
+      },
+    ],
   };
 
   return (
     <section
       id="projects"
-      ref={ref}
-     className="py-16 md:py-24 px-4 md:px-6"
+      className="relative py-28 px-4 overflow-hidden bg-gradient-to-b from-black via-[#0b0b10] to-black"
     >
-      {/* BACKGROUND GLOW */}
+      {/* Glow background */}
+      <div className="absolute inset-0 opacity-20">
+        <div className="absolute top-20 left-1/2 w-[500px] h-[500px] bg-blue-600 blur-[150px] rounded-full" />
+      </div>
 
-      <div
-        className="absolute top-20 left-10 w-72 h-72
-        bg-blue-500/20 blur-3xl rounded-full"
-      ></div>
-
-      <div
-        className="absolute bottom-10 right-10 w-80 h-80
-        bg-purple-500/20 blur-3xl rounded-full"
-      ></div>
-
-      <div className="max-w-7xl mx-auto relative z-10">
-        {/* TITLE */}
-
-        <motion.h2
-          className="text-3xl md:text-5xl font-extrabold text-center mb-16
-          bg-gradient-to-r from-blue-400 via-purple-400 to-pink-500
-          bg-clip-text text-transparent"
-          initial={{ opacity: 0, y: 40 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.7 }}
+      <div className="max-w-6xl mx-auto relative z-10">
+        {/* Heading */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          className="text-center mb-16"
         >
-          Featured Projects
-        </motion.h2>
+          <h2 className="text-5xl font-extrabold text-white tracking-tight">
+            Featured Projects
+          </h2>
+          <p className="text-gray-400 mt-3">
+            AI • ML • Full Stack creations
+          </p>
+        </motion.div>
 
-        {/* SLIDER */}
-
-        <Slider {...projectSliderSettings}>
-          {dashboards.map((project, index) => (
-            <div key={index} className="px-4 py-6">
+        {/* Slider */}
+        <div className="relative group">
+        <Slider {...settings}>
+          {projects.map((project) => (
+            <div key={project.id} className="px-4">
               <motion.div
-  whileHover={{
-    y: -12,
-    rotateX: 6,
-    rotateY: -6,
-  }}
-  transition={{
-    type: "spring",
-    stiffness: 200,
-    damping: 15,
-  }}
-className="
-relative group rounded-3xl overflow-hidden
-bg-white/5 backdrop-blur-xl border border-white/10
-shadow-2xl cursor-pointer
-h-[350px] md:h-[500px]
-flex flex-col
-"
-  onClick={() => setSelectedProject(project)}
->
-  {/* GLOW HOVER */}
-  <div
-    className="absolute inset-0 opacity-0 group-hover:opacity-100
-    transition duration-700
-    bg-gradient-to-br from-blue-500/20 via-purple-500/20 to-pink-500/20"
-  ></div>
+                whileHover={{ scale: 1.03 }}
+                onClick={() => setSelectedProject(project)}
+                className="group cursor-pointer rounded-3xl overflow-hidden
+                border border-white/10 bg-white/5 backdrop-blur-2xl
+                shadow-[0_10px_40px_rgba(0,0,0,0.4)]"
+              >
+                {/* Image */}
+                <div className="overflow-hidden">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="h-56 w-full object-cover
+                    transition duration-700 group-hover:scale-110"
+                  />
+                </div>
 
-  {/* STATUS */}
-  <span
-    className="absolute top-4 right-4 z-20
-    bg-gradient-to-r from-blue-500 to-purple-600
-    text-white text-[10px] font-bold
-    px-3 py-1 rounded-full shadow-lg"
-  >
-    {project.status}
-  </span>
+                {/* Content */}
+                <div className="p-6">
+                  <p className="text-xs text-blue-400 tracking-widest">
+                    {project.category}
+                  </p>
 
-  {/* IMAGE */}
-<div className="relative h-36 md:h-60 overflow-hidden flex-shrink-0">
-    <img
-      src={project.images[0]}
-      alt={project.title}
-      className="
-w-full
-h-full
-object-contain
-bg-black/10
-group-hover:scale-105
-transition duration-700
-"
-    />
+                  <h3 className="text-2xl font-bold text-white mt-2">
+                    {project.title}
+                  </h3>
 
-    <div
-      className="absolute inset-0 bg-gradient-to-t
-      from-black/70 via-black/20 to-transparent"
-    ></div>
-  </div>
+                  <p className="text-gray-400 text-sm mt-3 leading-relaxed">
+                    {project.description}
+                  </p>
 
-  {/* CONTENT */}
- <div className="relative z-10 p-4 flex flex-col gap-1">
-  <h3 className="text-lg md:text-2xl font-bold text-white leading-tight">
-  {project.title}
-</h3>
+                  {/* Tech */}
+                  <div className="flex flex-wrap gap-2 mt-4">
+                    {project.technologies.map((tech) => (
+                      <span
+                        key={tech}
+                        className="text-xs px-3 py-1 rounded-full
+                        bg-white/5 border border-white/10 text-gray-300"
+                      >
+                        {tech}
+                      </span>
+                    ))}
+                  </div>
 
-    <p className="text-blue-400 text-sm mb-4">
-      {project.category}
-    </p>
+                  {/* Buttons */}
+                  <div className="flex gap-3 mt-6">
+                    <a
+                      href={project.demo}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="flex-1 flex items-center justify-center gap-2
+                      py-2 rounded-xl bg-white text-black font-medium
+                      hover:scale-[1.02] transition"
+                    >
+                      <ExternalLink size={16} /> Live
+                    </a>
 
-   <p
-  className="
-  text-gray-300
-  text-sm
-  leading-relaxed
-  line-clamp-2
-  mt-1
-  "
->
-  {project.description}
-</p>
-    {/* BUTTON */}
-    <div
-      className="mt-3 opacity-0 translate-y-5
-      group-hover:opacity-100 group-hover:translate-y-0
-      transition duration-500"
-    >
-     <button
-  className="
-  px-4 py-2
-  text-sm
-  rounded-xl
-  bg-gradient-to-r
-  from-blue-500
-  to-purple-600
-  text-white
-  "
->
-        View Details
-      </button>
-    </div>
-  </div>
-
-  {/* BORDER GLOW */}
-  <div
-    className="absolute inset-0 rounded-3xl border
-    border-transparent group-hover:border-blue-400/30
-    transition duration-500"
-  ></div>
-</motion.div></div>
+                    <a
+                      href={project.github}
+                      target="_blank"
+                      rel="noreferrer"
+                      onClick={(e) => e.stopPropagation()}
+                      className="px-4 flex items-center justify-center
+                      rounded-xl border border-white/15 text-white
+                      hover:bg-white/10 transition"
+                    >
+                      <Github size={18} />
+                    </a>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
           ))}
         </Slider>
+        </div>
       </div>
 
       {/* MODAL */}
-
       <AnimatePresence>
         {selectedProject && (
           <motion.div
-            className="fixed inset-0 bg-black/70 backdrop-blur-md
-            flex items-center justify-center px-4 z-50"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             onClick={() => setSelectedProject(null)}
+            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-md flex items-center justify-center p-4"
           >
             <motion.div
-              className="bg-gray-900 border border-white/10
-              rounded-3xl p-6 max-w-4xl w-full relative shadow-2xl"
-              initial={{ scale: 0.7, opacity: 0 }}
+              initial={{ scale: 0.9, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.7, opacity: 0 }}
-              transition={{ duration: 0.3 }}
+              exit={{ scale: 0.9, opacity: 0 }}
               onClick={(e) => e.stopPropagation()}
+              className="relative w-full max-w-3xl rounded-3xl
+              bg-[#0f0f14] border border-white/10 overflow-hidden"
             >
-              {/* CLOSE */}
-
               <button
                 onClick={() => setSelectedProject(null)}
-                className="absolute top-4 right-4 bg-white/10
-                hover:bg-white/20 text-white px-3 py-1 rounded-lg transition"
+                className="absolute top-4 right-4 text-white/70 hover:text-white"
               >
-                ✕
+                <X />
               </button>
 
-              {/* TITLE */}
+              <img
+                src={selectedProject.image}
+                className="h-72 w-full object-cover"
+              />
 
-              <h3
-  className="
-  text-xl md:text-2xl
-  font-bold
-  text-white
-  line-clamp-2
-  min-h-[56px]
-"
->
-                {selectedProject.title}
-              </h3>
+              <div className="p-6">
+                <h3 className="text-3xl font-bold text-white">
+                  {selectedProject.title}
+                </h3>
 
-              <p className="text-blue-400 mb-5">
-                {selectedProject.category}
-              </p>
+                <p className="text-blue-400 mt-2">
+                  {selectedProject.category}
+                </p>
 
-              <p className="text-gray-300 leading-relaxed mb-6">
-                {selectedProject.description}
-              </p>
-
-              {/* IMAGE SLIDER */}
-
-              <Slider {...imageSliderSettings}>
-                {selectedProject.images.map((img, i) => (
-                  <div key={i}>
-                    <img
-                      src={img}
-                      alt=""
-                      className="rounded-2xl w-full h-[420px] object-contain"
-                    />
-                  </div>
-                ))}
-              </Slider>
-
-              {/* ACTION BUTTONS */}
-
-              <div className="flex justify-center gap-4 mt-8">
-                <a
-                  href={selectedProject.demo}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl
-                  bg-gradient-to-r from-blue-500 to-purple-600
-                  text-white font-semibold hover:scale-105 transition"
-                >
-                  <ExternalLink size={18} />
-                  Live Demo
-                </a>
-
-                <a
-                  href={selectedProject.github}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center gap-2 px-6 py-3 rounded-xl
-                  bg-white/10 border border-white/10 text-white
-                  font-semibold hover:bg-white/20 transition"
-                >
-                  <Github size={18} />
-                  GitHub
-                </a>
+                <p className="text-gray-300 mt-4 leading-relaxed">
+                  {selectedProject.description}
+                </p>
               </div>
             </motion.div>
           </motion.div>

@@ -260,3 +260,16 @@ body {
 .slick-next {
   z-index: 999 !important;
 }
+.slick-prev:before,
+.slick-next:before {
+  display: none !important;
+}
+
+.slick-prev,
+.slick-next {
+  z-index: 999 !important;
+}
+
+.slick-slide {
+  padding: 0 8px;
+}
