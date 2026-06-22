@@ -273,3 +273,22 @@ body {
 .slick-slide {
   padding: 0 8px;
 }
+.slick-dots li button:before {
+  color: white !important;
+}
+
+.slick-dots li.slick-active button:before {
+  color: #22d3ee !important;
+}
+
+.slick-slide {
+  height: inherit !important;
+}
+
+.slick-track {
+  display: flex !important;
+}
+
+.slick-slide > div {
+  height: 100%;
+}
