@@ -36,9 +36,15 @@ export default function About() {
         <motion.div
           whileHover={{ scale: 1.01 }}
           transition={{ duration: 0.3 }}
-          className="backdrop-blur-md bg-white/5 border border-white/10 rounded-3xl p-6 md:p-12 shadow-2xl"
+          className="
+bg-white/[0.04]
+border border-white/10
+rounded-3xl
+p-6 md:p-12
+shadow-xl
+"
         >
-          <p className="text-base md:text-xl text-gray-300 leading-8 md:leading-9 leading-9 text-justify mb-6">
+          <p className="text-[15px] md:text-xl text-gray-300 leading-8 md:leading-9 text-justify mb-6">
             Hi, I'm <span className="font-semibold text-cyan-400">Joe Renald A</span>,
             an MCA student and passionate software developer with a strong
             interest in Full-Stack Development, Artificial Intelligence, and
@@ -50,7 +56,7 @@ export default function About() {
             enhance my technical expertise through hands-on development.
           </p>
 
-          <p className="text-[15px] md:text-xl text-gray-300 leading-8 md:leading-9 text-left md:text-justify mb-6">
+          <p className="text-[15px] md:text-xl text-gray-300 leading-8 md:leading-9 text-justify mb-6">
             My journey in software development is driven by curiosity,
             creativity, and a desire to build meaningful digital experiences.
             I am passionate about designing scalable applications, writing
@@ -60,7 +66,7 @@ export default function About() {
             practical challenges through technology.
           </p>
 
-          <p className="text-[15px] md:text-xl text-gray-300 leading-8 md:leading-9 text-left md:text-justify">
+         <p className="text-[15px] md:text-xl text-gray-300 leading-8 md:leading-9 text-justify mb-6">
             My goal is to become a highly skilled Full-Stack Developer and AI
             enthusiast, contributing to impactful software products while
             continuously growing as a professional in the ever-evolving world

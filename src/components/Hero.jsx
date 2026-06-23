@@ -65,7 +65,7 @@ export default function Hero() {
             <TypeWriter text="MCA Student | Full-Stack Developer | AI Enthusiast" />
           </h2>
 
-          <p className="text-gray-400 text-base sm:text-lg md:text-xl mb-8 max-w-xl">
+          <p className="text-gray-400 text-base sm:text-lg md:text-xl mb-8 max-w-xl text-justify">
             I craft modern web applications with React, Tailwind CSS, and full-stack solutions. I focus on responsive design and seamless user experiences.
           </p>
 
